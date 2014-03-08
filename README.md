@@ -9,8 +9,6 @@ Beta version like BTSync
 
 ## Dependencies
 
-*`parser = future in puppet.conf`, due to [each](http://docs.puppetlabs.com/references/latest/function.html#each) function
-
 ## Usage
 In your hieradata file...
 
