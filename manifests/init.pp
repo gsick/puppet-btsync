@@ -2,7 +2,7 @@
 class btsync(
   $glibc23                = hiera('btsync::glibc23', 'glibc23'),
   $install_dir            = hiera('btsync::install_dir', '/opt/btsync'),
-  $storage_conf_path      = hiera('btsync::storage_conf_path', hiera('btsync::install_dir')"/.sync"),
+  $storage_conf_path      = hiera('btsync::storage_conf_path', '/opt/btsync/.sync'),
   $webui_ip               = hiera('btsync::webui_ip', '127.0.0.1'),
   $webui_port             = hiera('btsync::webui_port', '8888'),
   $webui_login            = hiera('btsync::webui_login'),
@@ -45,12 +45,10 @@ class btsync(
     content => template("${module_name}/btsync.json.erb"),
   }
 
-  service { 'btsync':
+  exec { "btsync":
     require => [Exec["untar btsync"], File["${install_dir}/btsync.json"]],
-    enable => true,
-    ensure => running,
-    start => "${install_dir}/btsync --config btsync.json",
-    hasrestart => false,
-    hasstatus => false,
+    cwd => "${install_dir}",
+    command => "${install_dir}/btsync --config btsync.json",
+    creates => "${storage_conf_path}/sync.pid",
   }
 }
