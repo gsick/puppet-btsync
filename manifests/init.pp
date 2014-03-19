@@ -49,6 +49,5 @@ class btsync(
     require => [Exec["untar btsync"], File["${install_dir}/btsync.json"]],
     cwd => "${install_dir}",
     command => "${install_dir}/btsync --config btsync.json",
-    creates => "${storage_conf_path}/sync.pid",
   }
 }
