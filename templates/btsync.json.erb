@@ -1,10 +1,10 @@
 {
-  "storage_path" : "<%= scope.lookupvar('btsync::storage_conf_path') %>",
+  "storage_path" : "<%= @storage_conf_path %>",
   "use_gui" : false,
   "webui" : {
-    "listen" : "<%= scope.lookupvar('btsync::webui_ip') %>:<%= scope.lookupvar('btsync::webui_port') %>",
-    "login" : "<%= scope.lookupvar('btsync::login') %>",
-    "password" : "<%= scope.lookupvar('btsync::pwd') %>",
-    "api_key" : "<%= scope.lookupvar('btsync::api_key') %>"
+    "listen" : "<%= @webui_ip %>:<%= @webui_port %>",
+    "login" : "<%= @webui_login %>",
+    "password" : "<%= @webui_pwd %>",
+    "api_key" : "<%= @api_key %>"
   }
 }

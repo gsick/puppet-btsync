@@ -2,18 +2,16 @@
 class btsync(
   $glibc23                = hiera('btsync::glibc23', 'glibc23'),
   $install_dir            = hiera('btsync::install_dir', '/opt/btsync'),
-  $storage_conf_path      = hiera('btsync::storage_conf_path', "${install_dir}/.sync"),
+  $storage_conf_path      = hiera('btsync::storage_conf_path', hiera('btsync::install_dir')"/.sync"),
   $webui_ip               = hiera('btsync::webui_ip', '127.0.0.1'),
   $webui_port             = hiera('btsync::webui_port', '8888'),
-  $webui_login            = hiera('btsync::login'),
-  $webui_pwd              = hiera('btsync::pwd'),
+  $webui_login            = hiera('btsync::webui_login'),
+  $webui_pwd              = hiera('btsync::webui_pwd'),
   $api_key                = hiera('btsync::api_key'),
   $tmp                    = hiera('btsync::tmp', '/tmp'),
 ) {
 
   singleton_packages("wget")
-
-  $arch = ''
 
   case $architecture {
     'x86_64':  { $arch = 'x64'}
@@ -44,6 +42,7 @@ class btsync(
 
   file { "${install_dir}/btsync.json":
     require => File["${storage_conf_path}"],
+    content => template("${module_name}/btsync.json.erb"),
   }
 
   service { 'btsync':
