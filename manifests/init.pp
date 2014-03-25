@@ -59,14 +59,14 @@ class btsync(
   case $::architecture {
     'x86_64':        {  $arch = 'x64'}
     'i386':          {  $arch = 'i386'}
-    default:         {  fail("Architecture not compatible: ${architecture}")}
+    default:         {  fail("Architecture not compatible: ${::architecture}")}
   }
 
   case $glibc23 {
-    true:       {  $download_url = "http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-${arch}/track/stable"
-                   $file_name = "btsync_glibc23_${arch}.tar.gz"}
-    default:    {  $download_url = "http://download-lb.utorrent.com/endpoint/btsync/os/linux-${arch}/track/stable"
-                   $file_name = "btsync_${arch}.tar.gz"}
+    true:       { $download_url = "http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-${arch}/track/stable"
+                  $file_name = "btsync_glibc23_${arch}.tar.gz"}
+    default:    { $download_url = "http://download-lb.utorrent.com/endpoint/btsync/os/linux-${arch}/track/stable"
+                  $file_name = "btsync_${arch}.tar.gz"}
   }
 
   file { 'btsync install dir':
