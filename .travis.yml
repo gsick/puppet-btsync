@@ -7,7 +7,7 @@ before_script:
   - cd rspec-puppet
   - gem build rspec-puppet.gemspec
   - gem install rspec-puppet-*.gem
-  - cd gsick/puppet-btsync
+  - cd ../puppet-btsync
 script: "rake test"
 env:
   - PUPPET_VERSION=3.4.3
