@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=master)](https://travis-ci.org/gsick/puppet-btsync)
+
 puppet-btsync
 =============
 
