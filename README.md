@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=master)](https://travis-ci.org/gsick/puppet-btsync)
+[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png)](https://coveralls.io/r/gsick/puppet-btsync)
 
 puppet-btsync
 =============
