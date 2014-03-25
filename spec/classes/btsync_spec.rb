@@ -46,7 +46,7 @@ describe 'btsync' do
 
     it do
       should contain_file('btsync conf file').with({
-        'ensure'  => 'present',
+        'ensure'  => 'file',
         'path'    => '/opt/btsync/btsync.json',
         'require' => 'File[btsync install dir]',
       })

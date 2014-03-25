@@ -112,7 +112,7 @@ class btsync(
   }
 
   file { 'btsync conf file':
-    ensure  => present,
+    ensure  => file,
     path    => "${install_dir}/btsync.json",
     require => File['btsync install dir'],
     content => template("${module_name}/btsync.json.erb"),
