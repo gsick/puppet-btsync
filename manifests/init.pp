@@ -1,4 +1,47 @@
-
+# = Class: btsync
+#
+# This class installs and configure BTSync torrent client.
+#
+# == Parameters:
+#
+# $glibc23:: The btsync version with glibc23.
+#
+# $install_dir::  BTSync home path.
+#
+# $storage_conf_path::  BTSync conf path.
+#
+# $webui_ip::  The IP for web UI.
+#
+# $webui_port::  The port for web UI.
+#
+# $webui_login::  The login for web UI.
+#
+# $webui_pwd::  The password for web UI.
+#
+# $api_key::  The api key.
+#
+# $tmp::  Temp directory.
+#
+# == Requires:
+#
+# Nothing
+#
+# == Sample Usage:
+#
+#   class {'btsync':
+#     webui_login => 'my_login',
+#     webui_pwd   => 'my_password',
+#     api_key     => 'my_api_key',
+#   }
+#
+# == Authors
+#
+# Gamaliel Sick
+#
+# == Copyright
+#
+# Copyright 2014 Gamaliel Sick, unless otherwise noted.
+#
 class btsync(
   $glibc23                = hiera('btsync::glibc23', true),
   $install_dir            = hiera('btsync::install_dir', '/opt/btsync'),
@@ -11,7 +54,7 @@ class btsync(
   $tmp                    = hiera('btsync::tmp', '/tmp'),
 ) {
 
-  singleton_packages("wget")
+  singleton_packages('wget')
 
   case $architecture {
     'x86_64':  { $arch = 'x64'}
@@ -48,7 +91,7 @@ class btsync(
     require => Package['wget'],
   }
 
-  exec { "untar btsync":
+  exec { 'untar btsync':
     require => File['btsync install dir'],
     cwd     => $tmp,
     path    => '/bin:/usr/bin',
@@ -65,7 +108,7 @@ class btsync(
 
   exec { 'btsync':
     require => [Exec['untar btsync'], File['btsync conf file', 'btsync conf dir']],
-    cwd     => "${install_dir}",
+    cwd     => $install_dir,
     command => "${install_dir}/btsync --config btsync.json",
   }
 }
