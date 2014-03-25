@@ -47,6 +47,11 @@ It will create `/opt/btsync/btsync.json` with these default values:
 
 ## Parameters
 
+  * `btsync::device_name`: name of the device, default all `My Sync Device`
+  * `btsync::listening_port`: listening port, default all `0`
+  * `btsync::use_upnp`: upnp activated, default `true`
+  * `btsync::download_limit`: download limit, default no limit `0`
+  * `btsync::upload_limit`: upload limit, default no limit `0`
   * `btsync::webui_login`: the login for web ui (required)
   * `btsync::webui_pwd`: the password for web ui (required)
   * `btsync::api_key`: the btsync api key (required)
@@ -100,7 +105,3 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
-## Waiting more ...
-
-http://forum.bittorrent.com/topic/28202-improvement-for-silent-install/

@@ -22,6 +22,16 @@
 #
 # $tmp::  Temp directory.
 #
+# $listening_port::  Temp directory.
+#
+# $use_upnp::  Temp directory.
+#
+# $download_limit::  Temp directory.
+#
+# $upload_limit::  Temp directory.
+#
+# $device_name:: Name of the device
+#
 # == Requires:
 #
 # Nothing
@@ -52,6 +62,11 @@ class btsync(
   $webui_pwd              = hiera('btsync::webui_pwd'),
   $api_key                = hiera('btsync::api_key'),
   $tmp                    = hiera('btsync::tmp', '/tmp'),
+  $listening_port         = hiera('btsync::listening_port', 0),
+  $use_upnp               = hiera('btsync::use_upnp', true),
+  $download_limit         = hiera('btsync::download_limit', 0),
+  $upload_limit           = hiera('btsync::upload_limit', 0),
+  $device_name            = hiera('btsync::device_name', 'My Sync Device'),
 ) {
 
   singleton_packages('wget')
