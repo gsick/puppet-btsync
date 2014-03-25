@@ -5,12 +5,19 @@ BTSync installation and configuration module<br />
 [BTSync](http://www.bittorrent.com/intl/en/sync)<br />
 
 ## Status
+
 Beta version like BTSync
 
 ## Usage
-In your hieradata file...
 
-Basic usage:
+In your puppet file
+
+```puppet
+include btsync
+```
+
+In your hieradata file
+
 ```yaml
 ---
 btsync::webui_login: my_login
@@ -18,17 +25,46 @@ btsync::webui_pwd: my_password
 btsync::api_key: my_api_key
 ```
 
-With more options:
-```yaml
----
-btsync::webui_login: my_login
-btsync::webui_pwd: my_password
-btsync::api_key: my_api_key
+It will create `/opt/btsync/btsync.json` with these default values:
 
-btsync::install_dir: /opt/btsync
-btsync::storage_conf_path: /opt/btsync/.btsync
-btsync::webui_ip: 127.0.0.1
-btsync::webui_port: 8888
+```json
+{
+  "storage_path" : "/opt/btsync/.sync",
+  "use_gui" : false,
+  "webui" : {
+    "listen" : "127.0.0.1:8888",
+    "login" : "my_login",
+    "password" : "my_password",
+    "api_key" : "my_api_key"
+  }
+}
+```
+
+## Parameters
+
+  * `btsync::webui_login`: the login for web ui (required)
+  * `btsync::webui_pwd`: the password for web ui (required)
+  * `btsync::api_key`: the btsync api key (required)
+  * `btsync::glibc23`: boolean, btsync version, default `true`
+  * `btsync::install_dir`: btsync installation directory, default `/opt/btsync`
+  * `btsync::storage_conf_path`: btsync configuration directory, default `/opt/btsync/.sync`
+  * `btsync::webui_ip`: the web ui ip, default `127.0.0.1`
+  * `btsync::webui_port`: the web ui port, default `8888`
+  * `btsync::tmp`: tmp directory used by install, default `/tmp`
+
+## Tests
+
+### Unit tests
+
+```bash
+$ bundle
+$ rake test
+```
+
+### Smoke tests
+
+```bash
+$ puppet apply tests/init.pp --noop
 ```
 
 ## Authors
