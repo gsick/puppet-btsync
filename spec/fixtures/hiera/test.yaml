@@ -1,0 +1,4 @@
+---
+btsync::webui_login: my_login
+btsync::webui_pwd: my_password
+btsync::api_key: my_api_key

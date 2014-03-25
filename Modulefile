@@ -1,6 +1,6 @@
 name         'gsick-btsync'
 version      '0.0.1'
-source       'git://github.com/gsick/puppet-btsync.git'
+source       'https://github.com/gsick/puppet-btsync.git'
 author       'Gamaliel Sick'
 license      'MIT'
 summary      'BTSync configuration module'
