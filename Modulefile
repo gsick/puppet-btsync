@@ -1,5 +1,5 @@
 name         'gsick-btsync'
-version      '0.0.3'
+version      '0.0.4'
 source       'https://github.com/gsick/puppet-btsync.git'
 author       'Gamaliel Sick'
 license      'MIT'

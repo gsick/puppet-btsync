@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=master)](https://travis-ci.org/gsick/puppet-btsync)
-[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png?branch=master)](https://coveralls.io/r/gsick/puppet-btsync?branch=master)
+[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=0.0.4)](https://travis-ci.org/gsick/puppet-btsync)
+[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png?branch=0.0.4)](https://coveralls.io/r/gsick/puppet-btsync?branch=0.0.4)
 
 puppet-btsync
 =============
@@ -34,7 +34,14 @@ It will create `/opt/btsync/btsync.json` with these default values:
 
 ```json
 {
+  "device_name": "My Sync Device",
+  "listening_port" : 0,
   "storage_path" : "/opt/btsync/.sync",
+  "pid_file" : "/var/run/btsync.pid",
+  "check_for_updates" : false,
+  "use_upnp" : true,
+  "download_limit" : 0,
+  "upload_limit" : 0,
   "use_gui" : false,
   "webui" : {
     "listen" : "127.0.0.1:8888",
