@@ -16,7 +16,9 @@ Beta version like BTSync
 In your puppet file
 
 ```puppet
-include btsync
+node default {
+  include btsync
+}
 ```
 
 In your hieradata file
@@ -60,7 +62,7 @@ It will create `/opt/btsync/btsync.json` with these default values:
 ### Unit tests
 
 ```bash
-$ bundle
+$ bundle install
 $ rake test
 ```
 
