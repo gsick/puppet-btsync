@@ -7,9 +7,21 @@ puppet-btsync
 BTSync installation and configuration module<br />
 [BTSync](http://www.bittorrent.com/intl/en/sync)<br />
 
+## Table of Contents
+
+* [Status](#status)
+* [Usage](#usage)
+* [Parameters](#parameters)
+* [Tests](#tests)
+    * [Unit tests](#unit-tests)
+    * [Smoke tests](#smoke-tests)
+* [Authors](#authors)
+* [Licence](#licence)
+
 ## Status
 
-Beta version like BTSync
+Beta version like BTSync<br />
+(0.0.4 released)
 
 ## Usage
 
