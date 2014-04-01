@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=0.0.5)](https://travis-ci.org/gsick/puppet-btsync)
-[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png?branch=0.0.5)](https://coveralls.io/r/gsick/puppet-btsync?branch=0.0.5)
+[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=0.0.6)](https://travis-ci.org/gsick/puppet-btsync)
+[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png?branch=0.0.6)](https://coveralls.io/r/gsick/puppet-btsync?branch=0.0.6)
 (100% with rspec-puppet)
 
 puppet-btsync
@@ -26,7 +26,7 @@ BTSync installation and configuration module<br />
 ## Status
 
 Beta version like BTSync<br />
-(0.0.5 released)
+(0.0.6 released)
 
 ## Usage
 
