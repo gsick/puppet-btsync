@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=master)](https://travis-ci.org/gsick/puppet-btsync)
-[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png?branch=master)](https://coveralls.io/r/gsick/puppet-btsync?branch=master)
+[![Build Status](https://travis-ci.org/gsick/puppet-btsync.svg?branch=0.0.5)](https://travis-ci.org/gsick/puppet-btsync)
+[![Coverage Status](https://coveralls.io/repos/gsick/puppet-btsync/badge.png?branch=0.0.5)](https://coveralls.io/r/gsick/puppet-btsync?branch=0.0.5)
 (100% with rspec-puppet)
 
 puppet-btsync
@@ -13,16 +13,20 @@ BTSync installation and configuration module<br />
 * [Status](#status)
 * [Usage](#usage)
 * [Parameters](#parameters)
+* [Installation](#installation)
+    * [puppet](#puppet)
+    * [librarian-puppet](#librarian-puppet)
 * [Tests](#tests)
     * [Unit tests](#unit-tests)
     * [Smoke tests](#smoke-tests)
 * [Authors](#authors)
+* [Contributing](#contributing)
 * [Licence](#licence)
 
 ## Status
 
 Beta version like BTSync<br />
-(0.0.4 released)
+(0.0.5 released)
 
 ## Usage
 
@@ -82,6 +86,28 @@ It will create `/opt/btsync/btsync.json` with these default values:
   * `btsync::webui_port`: the web ui port, default `8888`
   * `btsync::tmp`: tmp directory used by install, default `/tmp`
 
+## Installation
+
+### puppet
+
+```bash
+$ puppet module install gsick/btsync
+```
+
+### librarian-puppet
+
+Add in your Puppetfile
+
+```text
+mod 'gsick/btsync'
+```
+
+and run
+
+```bash
+$ librarian-puppet update
+```
+
 ## Tests
 
 ### Unit tests
@@ -100,6 +126,14 @@ $ puppet apply tests/init.pp --noop
 ## Authors
 
 Gamaliel Sick
+
+## Contributing
+
+  * Fork it
+  * Create your feature branch (git checkout -b my-new-feature)
+  * Commit your changes (git commit -am 'Add some feature')
+  * Push to the branch (git push origin my-new-feature)
+  * Create new Pull Request
 
 ## Licence
 
