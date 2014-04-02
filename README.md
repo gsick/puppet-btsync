@@ -91,7 +91,7 @@ It will create `/opt/btsync/btsync.json` with these default values:
 ### puppet
 
 ```bash
-$ puppet module install gsick/btsync
+$ puppet module install gsick-btsync
 ```
 
 ### librarian-puppet
