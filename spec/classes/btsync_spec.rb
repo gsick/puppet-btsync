@@ -26,7 +26,7 @@ describe 'btsync' do
     it do
       should contain_exec('download btsync').with({
         'cwd'     => '/tmp',
-        'path'    => '/bin:/usr/bin',
+        'path'    => '/sbin:/usr/sbin:/bin:/usr/bin',
         'command' => 'wget -O btsync_glibc23_x64.tar.gz http://download-lb.utorrent.com/endpoint/btsync/os/linux-glibc23-x64/track/stable',
         'creates' => '/tmp/btsync_glibc23_x64.tar.gz',
         'notify'  => 'Exec[untar btsync]',
@@ -37,7 +37,7 @@ describe 'btsync' do
     it do
       should contain_exec('untar btsync').with({
         'cwd'     => '/tmp',
-        'path'    => '/bin:/usr/bin',
+        'path'    => '/sbin:/usr/sbin:/bin:/usr/bin',
         'command' => 'tar -zxvf btsync_glibc23_x64.tar.gz -C /opt/btsync',
         'creates' => '/opt/btsync/btsync',
         'require' => 'File[btsync install dir]',
@@ -68,7 +68,7 @@ describe 'btsync' do
     it do
       should contain_exec('download btsync').with({
         'cwd'     => '/tmp',
-        'path'    => '/bin:/usr/bin',
+        'path'    => '/sbin:/usr/sbin:/bin:/usr/bin',
         'command' => 'wget -O btsync_x64.tar.gz http://download-lb.utorrent.com/endpoint/btsync/os/linux-x64/track/stable',
         'creates' => '/tmp/btsync_x64.tar.gz',
         'notify'  => 'Exec[untar btsync]',
@@ -79,7 +79,7 @@ describe 'btsync' do
     it do
       should contain_exec('untar btsync').with({
         'cwd'     => '/tmp',
-        'path'    => '/bin:/usr/bin',
+        'path'    => '/sbin:/usr/sbin:/bin:/usr/bin',
         'command' => 'tar -zxvf btsync_x64.tar.gz -C /opt/btsync',
         'creates' => '/opt/btsync/btsync',
         'require' => 'File[btsync install dir]',
@@ -95,7 +95,7 @@ describe 'btsync' do
     it do
       should contain_exec('download btsync').with({
         'cwd'     => '/tmp',
-        'path'    => '/bin:/usr/bin',
+        'path'    => '/sbin:/usr/sbin:/bin:/usr/bin',
         'command' => 'wget -O btsync_i386.tar.gz http://download-lb.utorrent.com/endpoint/btsync/os/linux-i386/track/stable',
         'creates' => '/tmp/btsync_i386.tar.gz',
         'notify'  => 'Exec[untar btsync]',
@@ -106,7 +106,7 @@ describe 'btsync' do
     it do
       should contain_exec('untar btsync').with({
         'cwd'     => '/tmp',
-        'path'    => '/bin:/usr/bin',
+        'path'    => '/sbin:/usr/sbin:/bin:/usr/bin',
         'command' => 'tar -zxvf btsync_i386.tar.gz -C /opt/btsync',
         'creates' => '/opt/btsync/btsync',
         'require' => 'File[btsync install dir]',

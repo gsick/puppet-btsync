@@ -55,6 +55,15 @@
 class btsync(
   $glibc23                = hiera('btsync::glibc23', true),
   $install_dir            = hiera('btsync::install_dir', '/opt/btsync'),
+  $conf_dir               = hiera('btsync::conf_dir', '/etc/btsync'),
+  $log_dir                = hiera('btsync::log_dir', '/var/log/btsync'),
+  $clients                = hiera('btsync::clients', { btsync_0 => {} }),
+  $tmp                    = hiera('btsync::tmp', '/tmp'),
+  
+
+class btsync(
+  $glibc23                = hiera('btsync::glibc23', true),
+  $install_dir            = hiera('btsync::install_dir', '/opt/btsync'),
   $storage_conf_path      = hiera('btsync::storage_conf_path', '/opt/btsync/.sync'),
   $webui_ip               = hiera('btsync::webui_ip', '127.0.0.1'),
   $webui_port             = hiera('btsync::webui_port', '8888'),
@@ -73,6 +82,7 @@ class btsync(
 
   case $::architecture {
     'x86_64':        {  $arch = 'x64'}
+    'amd64':         {  $arch = 'x64'}
     'i386':          {  $arch = 'i386'}
     default:         {  fail("Architecture not compatible: ${::architecture}")}
   }
@@ -91,12 +101,23 @@ class btsync(
 
   file { 'btsync conf dir':
     ensure => directory,
-    path   => $storage_conf_path,
+    path   => $conf_dir,
+  }
+
+  file { 'btsync log dir':
+    ensure => directory,
+    path   => $log_dir,
+    mode   => 0755,
+  }
+
+  file { 'btsync storage dir':
+    ensure => directory,
+    path   => $storage_path,
   }
 
   exec { 'download btsync':
     cwd     => $tmp,
-    path    => '/bin:/usr/bin',
+    path    => '/sbin:/usr/sbin:/bin:/usr/bin',
     command => "wget -O ${file_name} ${download_url}",
     creates => "${tmp}/${file_name}",
     notify  => Exec['untar btsync'],
@@ -106,10 +127,15 @@ class btsync(
   exec { 'untar btsync':
     require => File['btsync install dir'],
     cwd     => $tmp,
-    path    => '/bin:/usr/bin',
+    path    => '/sbin:/usr/sbin:/bin:/usr/bin',
     command => "tar -zxvf ${file_name} -C ${install_dir}",
     creates => "${install_dir}/btsync",
   }
+
+
+
+
+
 
   file { 'btsync conf file':
     ensure  => file,

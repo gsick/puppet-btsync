@@ -1,17 +1,24 @@
 {
   "device_name": "<%= @device_name %>",
   "listening_port" : <%= @listening_port %>,
-  "storage_path" : "<%= @storage_conf_path %>",
-  "pid_file" : "/var/run/btsync.pid",
-  "check_for_updates" : false,
+  "storage_path" : "<%= @storage_path_tmp %>",
+  "pid_file" : "<%= @pid_file_tmp %>",
+  "check_for_updates" : <%= @check_for_updates %>,
   "use_upnp" : <%= @use_upnp %>,
   "download_limit" : <%= @download_limit %>,
   "upload_limit" : <%= @upload_limit %>,
-  "use_gui" : false,
+  "use_gui" : <%= @use_gui %>,
+  <% if not @webui.empty? %>
   "webui" : {
+    
     "listen" : "<%= @webui_ip %>:<%= @webui_port %>",
     "login" : "<%= @webui_login %>",
     "password" : "<%= @webui_pwd %>",
     "api_key" : "<%= @api_key %>"
-  }
+  },
+  <% %>
+  "shared_folders" :
+  [
+  
+  ]
 }
